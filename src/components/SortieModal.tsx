@@ -64,12 +64,12 @@ export function SortieModal({
         <h2>Saisir une sortie</h2>
 
         <label className="sortie-modal__champ">
-          Date
+          <span className="sortie-modal__etiquette">Date</span>
           <input type="date" value={date} max={aujourdHui()} onChange={(e) => setDate(e.target.value)} />
         </label>
 
         <label className="sortie-modal__champ">
-          Km
+          <span className="sortie-modal__etiquette">Km</span>
           <input
             type="text"
             inputMode="decimal"
@@ -80,7 +80,7 @@ export function SortieModal({
         </label>
 
         <label className="sortie-modal__champ">
-          D+ (m)
+          <span className="sortie-modal__etiquette">D+ (m)</span>
           <input
             type="text"
             inputMode="decimal"
@@ -91,7 +91,7 @@ export function SortieModal({
         </label>
 
         <label className="sortie-modal__champ">
-          Durée (min)
+          <span className="sortie-modal__etiquette">Durée (min)</span>
           <input
             type="text"
             inputMode="decimal"
@@ -102,7 +102,7 @@ export function SortieModal({
         </label>
 
         <div className="sortie-modal__champ">
-          RPE
+          <span className="sortie-modal__etiquette">RPE</span>
           <div className="sortie-modal__rpe">
             {RPE_VALEURS.map((valeur) => (
               <button
@@ -118,7 +118,7 @@ export function SortieModal({
         </div>
 
         <div className="sortie-modal__champ">
-          Équipements portés
+          <span className="sortie-modal__etiquette">Équipements portés</span>
           {equipements.length === 0 ? (
             <p className="sortie-modal__note-vide">Aucun équipement enregistré.</p>
           ) : (
@@ -138,7 +138,7 @@ export function SortieModal({
         </div>
 
         <label className="sortie-modal__champ">
-          Note (optionnel)
+          <span className="sortie-modal__etiquette">Note (optionnel)</span>
           <textarea value={note} onChange={(e) => setNote(e.target.value)} rows={2} />
         </label>
 

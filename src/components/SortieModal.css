@@ -3,6 +3,7 @@
   inset: 0;
   display: flex;
   align-items: flex-end;
+  background: rgba(0, 0, 0, 0.55);
   z-index: 20;
 }
 
@@ -10,18 +11,23 @@
   width: 100%;
   max-height: 92vh;
   overflow-y: auto;
+  background: #10131e;
   padding: 1rem;
   padding-bottom: calc(1rem + env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.9rem;
 }
 
 .sortie-modal__champ {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.4rem;
   font-size: 0.85rem;
+}
+
+.sortie-modal__etiquette {
+  display: block;
 }
 
 .sortie-modal__champ input[type='text'],

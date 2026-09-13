@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
   z-index: 30;
   padding: 1rem;
 }
@@ -11,6 +12,9 @@
 .check-forme__feuille {
   width: 100%;
   max-width: 22rem;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #10131e;
   padding: 1rem;
   padding-top: calc(1rem + env(safe-area-inset-top));
   padding-bottom: calc(1rem + env(safe-area-inset-bottom));
