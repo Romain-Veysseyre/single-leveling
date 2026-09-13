@@ -1,0 +1,11 @@
+.app-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  color: #e6e8ef;
+  background: #0a0e18;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+  padding: 1rem;
+}
