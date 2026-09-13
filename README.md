@@ -13,6 +13,10 @@ Chaque `git push` sur `main` déclenche automatiquement le build, les tests
 et le déploiement sur GitHub Pages (onglet **Actions** du dépôt) :
 https://romain-veysseyre.github.io/single-leveling/
 
+**Après un correctif visuel, teste en navigation privée.** Sur Chrome,
+Ctrl+F5 ne suffit pas toujours à voir le résultat réel ; iOS Safari est
+encore plus tenace côté cache.
+
 ### Ouvrir le dev server depuis l'iPhone
 
 `npm run dev` écoute sur le réseau local (`server.host` dans
