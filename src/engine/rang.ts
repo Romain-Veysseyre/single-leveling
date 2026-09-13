@@ -21,7 +21,8 @@ import { sommeSurFenetre } from './fenetres';
 export type PorteRang = 'longueSortie' | 'hebdo' | 'dplus';
 
 export type EtatRang = {
-  rangAcquis: NomRang | null;
+  /** E est le plancher par défaut, même avant toute sortie ou tout seuil atteint. */
+  rangAcquis: NomRang;
   /** Portes qui bloquent le passage au rang suivant, évaluées aujourd'hui. Vide si rang max atteint. */
   portesBloquantes: PorteRang[];
 };
@@ -116,13 +117,15 @@ export function calculerRang(sorties: readonly Sortie[], dateJ: string): EtatRan
     .filter((s) => s.date <= dateJ)
     .sort((a, b) => a.date.localeCompare(b.date));
 
-  let maxRangIndex = -1;
+  // E (index 0) est le plancher par défaut : même sans sortie, ou avec des
+  // sorties sous ses propres seuils, le rang affiché reste E.
+  let maxRangIndex = 0;
   for (let i = 0; i < sortiesTriees.length; i++) {
     const candidat = rangIndexAtteint(sortiesTriees.slice(0, i + 1), sortiesTriees[i].date);
     if (candidat > maxRangIndex) maxRangIndex = candidat;
   }
 
-  const rangAcquis = maxRangIndex >= 0 ? RANGS[maxRangIndex].rang : null;
+  const rangAcquis = RANGS[maxRangIndex].rang;
   const portesBloquantes = calculerPortesBloquantes(sortiesTriees, dateJ, maxRangIndex);
 
   return { rangAcquis, portesBloquantes };

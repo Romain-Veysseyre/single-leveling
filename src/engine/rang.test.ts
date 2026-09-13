@@ -17,9 +17,9 @@ function sortie(date: string, km: number, denivele = 0): Sortie {
 }
 
 describe('rang : journal vide', () => {
-  it('ne plante pas, aucun rang gagné (les seuils de E lui-même ne sont pas atteints avec 0 sortie)', () => {
+  it('ne plante pas, E est le plancher par défaut (décision explicite, hors des seuils de 5.6)', () => {
     const { rangAcquis } = calculerRang([], '2026-06-15');
-    expect(rangAcquis).toBeNull();
+    expect(rangAcquis).toBe('E');
   });
 });
 

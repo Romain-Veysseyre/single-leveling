@@ -12,13 +12,9 @@ describe('deriveGameState : robustesse sur journal vide', () => {
     expect(etat.xpTotale).toBe(0);
   });
 
-  // Point à trancher avec l'utilisateur : aucun rang n'est gagné sur un
-  // journal vide (les seuils du rang E lui-même, 12 KME / 20 KME hebdo, ne
-  // sont pas atteints avec 0 sortie). Le SPEC ne définit pas d'état
-  // "avant E" explicitement — voir la réponse envoyée avec ce Bloc 4.
-  it('rang : aucun rang gagné sur un journal vide', () => {
+  it('rang : E par défaut sur un journal vide (décision explicite, badge toujours affiché)', () => {
     const etat = deriveGameState([], '2026-06-15');
-    expect(etat.rang.rangAcquis).toBeNull();
+    expect(etat.rang.rangAcquis).toBe('E');
   });
 
   it('état AFFUTE par défaut sur un journal vide (ratio neutralisé à 1.0)', () => {
