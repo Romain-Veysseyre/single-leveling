@@ -5,6 +5,7 @@ import type { CheckForme, Equipement, JournalEvent, Sortie } from './types';
 import { deriveGameState } from './engine/deriveGameState';
 import { calculerRatioCharge } from './engine/charge';
 import { aujourdHui } from './engine/dateUtils';
+import { tendanceForme } from './engine/formeTendance';
 import { RankBadge } from './components/RankBadge';
 import { XpBar } from './components/XpBar';
 import { EtatBadge } from './components/EtatBadge';
@@ -12,6 +13,7 @@ import { StatsPanel } from './components/StatsPanel';
 import { SortieModal, type DonneesSortie } from './components/SortieModal';
 import { CheckFormeModal } from './components/CheckFormeModal';
 import { ExportImport } from './components/ExportImport';
+import { FormeTendance } from './components/FormeTendance';
 
 type GainAffiche = {
   xp: number;
@@ -56,6 +58,8 @@ function App() {
   );
 
   const afficherCheckForme = pret && !formeAujourdhui && !formePasseeCetteSession;
+
+  const pointsTendanceForme = useMemo(() => tendanceForme(events, aujourdHui()), [events]);
 
   async function gererValiderSortie(donnees: DonneesSortie) {
     const etatAvant = gameState;
@@ -147,6 +151,7 @@ function App() {
       </main>
 
       <footer className="app__pied">
+        <FormeTendance points={pointsTendanceForme} />
         <ExportImport onApresImport={rechargerEvents} />
       </footer>
 

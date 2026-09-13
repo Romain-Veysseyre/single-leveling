@@ -17,6 +17,16 @@ export function dansFenetre(date: string, dateJ: string, nombreJours: number): b
   return delta >= 0 && delta < nombreJours;
 }
 
+/** Date décalée de `jours` (négatif = dans le passé), au format YYYY-MM-DD. */
+export function ajouterJours(date: string, jours: number): string {
+  const d = new Date(`${date}T00:00:00`);
+  d.setDate(d.getDate() + jours);
+  const annee = d.getFullYear();
+  const mois = String(d.getMonth() + 1).padStart(2, '0');
+  const jour = String(d.getDate()).padStart(2, '0');
+  return `${annee}-${mois}-${jour}`;
+}
+
 /** Date du jour, locale, au format YYYY-MM-DD. Partagée par le moteur et l'écran. */
 export function aujourdHui(): string {
   const d = new Date();
