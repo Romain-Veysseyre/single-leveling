@@ -144,6 +144,12 @@ ratioCharge = CA / CC
 Sans cette règle, les premières semaines produisent des ratios délirants et
 l'XP est écrasée dès le départ.
 
+**Recalcul manuel.** Une action manuelle « Recalculer les ratios de charge »
+rejoue l'intégralité du journal dans l'ordre chronologique et réécrit le champ
+`ratioCharge` de chaque sortie. Elle sert après une saisie antidatée ou un
+import. Elle est toujours déclenchée explicitement par l'utilisateur, jamais
+automatiquement.
+
 ### 5.3 Multiplicateur et état
 
 Dérivé de `ratioCharge`, jamais stocké :
