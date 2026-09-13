@@ -65,3 +65,23 @@
   font-size: 0.65rem;
   padding: 0.3rem;
 }
+
+.app__barre-onglets {
+  display: flex;
+  border-top: 1px solid currentColor;
+}
+
+.app__onglet {
+  flex: 1;
+  background: none;
+  border: none;
+  color: inherit;
+  opacity: 0.55;
+  padding: 0.4rem;
+  font-size: 0.7rem;
+}
+
+.app__onglet--actif {
+  opacity: 1;
+  font-weight: 700;
+}
