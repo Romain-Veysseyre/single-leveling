@@ -11,6 +11,7 @@ import { calculerRatioCharge } from './charge';
 import { etatEtMultiplicateur } from './etat';
 import { endurance, ascension, velocite, constance, resilience } from './stats';
 import { usureTousEquipements, type UsureEquipement } from './usure';
+import { aujourdHui } from './dateUtils';
 
 export type StatsJoueur = {
   endurance: number;
@@ -31,21 +32,13 @@ export type EtatJeu = {
   usures: UsureEquipement[];
 };
 
-function aujourdHuiLocal(): string {
-  const d = new Date();
-  const annee = d.getFullYear();
-  const mois = String(d.getMonth() + 1).padStart(2, '0');
-  const jour = String(d.getDate()).padStart(2, '0');
-  return `${annee}-${mois}-${jour}`;
-}
-
 /**
  * `dateJ` par défaut = aujourd'hui, paramétrable pour des calculs
  * déterministes (tests, ou un état figé dans le temps).
  */
 export function deriveGameState(
   events: readonly JournalEvent[],
-  dateJ: string = aujourdHuiLocal(),
+  dateJ: string = aujourdHui(),
 ): EtatJeu {
   const sorties = events.filter((e): e is Sortie => e.type === 'sortie');
   const equipements = events.filter((e): e is Equipement => e.type === 'equipement');

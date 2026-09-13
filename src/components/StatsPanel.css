@@ -1,0 +1,30 @@
+.stats-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.stats-panel__ligne {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr 2.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+}
+
+.stats-panel__piste {
+  height: 8px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  overflow: hidden;
+}
+
+.stats-panel__remplissage {
+  height: 100%;
+  background: currentColor;
+}
+
+.stats-panel__valeur {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}

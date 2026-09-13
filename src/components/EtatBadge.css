@@ -1,0 +1,22 @@
+.etat-badge {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.etat-badge__etat {
+  align-self: flex-start;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+}
+
+.etat-badge__portes {
+  font-size: 0.8rem;
+}
+
+.etat-badge__portes p {
+  margin: 0.15rem 0;
+}

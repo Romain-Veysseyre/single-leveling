@@ -16,3 +16,12 @@ export function dansFenetre(date: string, dateJ: string, nombreJours: number): b
   const delta = joursEntre(date, dateJ);
   return delta >= 0 && delta < nombreJours;
 }
+
+/** Date du jour, locale, au format YYYY-MM-DD. Partagée par le moteur et l'écran. */
+export function aujourdHui(): string {
+  const d = new Date();
+  const annee = d.getFullYear();
+  const mois = String(d.getMonth() + 1).padStart(2, '0');
+  const jour = String(d.getDate()).padStart(2, '0');
+  return `${annee}-${mois}-${jour}`;
+}

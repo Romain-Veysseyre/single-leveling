@@ -1,0 +1,15 @@
+.export-import {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 0.75rem;
+  padding: 0.5rem 0;
+}
+
+.export-import button {
+  background: none;
+  border: none;
+  color: inherit;
+  text-decoration: underline;
+  padding: 0.3rem;
+}

@@ -1,0 +1,28 @@
+.xp-bar {
+  width: 100%;
+}
+
+.xp-bar__ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.xp-bar__niveau {
+  font-weight: 700;
+}
+
+.xp-bar__piste {
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  border: 1px solid currentColor;
+  overflow: hidden;
+}
+
+.xp-bar__remplissage {
+  height: 100%;
+  background: currentColor;
+}

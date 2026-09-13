@@ -1,0 +1,86 @@
+.sortie-modal__fond {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  z-index: 20;
+}
+
+.sortie-modal__feuille {
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  padding: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.sortie-modal__champ {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.sortie-modal__champ input[type='text'],
+.sortie-modal__champ input[type='date'],
+.sortie-modal__champ textarea {
+  font-size: 1rem;
+  padding: 0.4rem;
+}
+
+.sortie-modal__rpe {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.35rem;
+}
+
+.sortie-modal__rpe-bouton {
+  padding: 0.5rem 0;
+  border: 1px solid currentColor;
+  background: none;
+  color: inherit;
+}
+
+.sortie-modal__rpe-bouton--actif {
+  font-weight: 700;
+  border-width: 2px;
+}
+
+.sortie-modal__equipements {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sortie-modal__equipement {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.sortie-modal__note-vide {
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.sortie-modal__erreur {
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+.sortie-modal__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.sortie-modal__actions button {
+  flex: 1;
+  padding: 0.6rem;
+  font-size: 1rem;
+}
