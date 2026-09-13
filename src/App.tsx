@@ -14,6 +14,7 @@ import { SortieModal, type DonneesSortie } from './components/SortieModal';
 import { CheckFormeModal } from './components/CheckFormeModal';
 import { ExportImport } from './components/ExportImport';
 import { FormeTendance } from './components/FormeTendance';
+import { DevPanel } from './components/DevPanel';
 
 type GainAffiche = {
   xp: number;
@@ -28,6 +29,7 @@ function App() {
   const [formePasseeCetteSession, setFormePasseeCetteSession] = useState(false);
   const [gainAffiche, setGainAffiche] = useState<GainAffiche | null>(null);
   const [rappelExportVisible, setRappelExportVisible] = useState(false);
+  const [devPanelOuvert, setDevPanelOuvert] = useState(false);
 
   async function rechargerEvents() {
     const tous = await getAllEvents();
@@ -153,6 +155,9 @@ function App() {
       <footer className="app__pied">
         <FormeTendance points={pointsTendanceForme} />
         <ExportImport onApresImport={rechargerEvents} />
+        <button type="button" className="app__bouton-dev" onClick={() => setDevPanelOuvert(true)}>
+          Dev
+        </button>
       </footer>
 
       {modalSortieOuverte && (
@@ -167,6 +172,14 @@ function App() {
         <CheckFormeModal
           onChoisir={(valeur) => void gererChoixForme(valeur)}
           onPasser={() => setFormePasseeCetteSession(true)}
+        />
+      )}
+
+      {devPanelOuvert && (
+        <DevPanel
+          events={events}
+          onApresChangement={() => void rechargerEvents()}
+          onFermer={() => setDevPanelOuvert(false)}
         />
       )}
     </div>

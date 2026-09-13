@@ -1,0 +1,55 @@
+.dev-panel__fond {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 40;
+}
+
+.dev-panel__feuille {
+  width: 100%;
+  max-height: 92vh;
+  overflow-y: auto;
+  background: #10131e;
+  padding: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dev-panel__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dev-panel__actions button {
+  padding: 0.7rem;
+  font-size: 0.9rem;
+  border: 1px solid currentColor;
+  background: none;
+  color: inherit;
+  text-align: left;
+}
+
+.dev-panel__json {
+  font-size: 0.7rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: 1px solid currentColor;
+  padding: 0.6rem;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.dev-panel__fermer {
+  align-self: center;
+  background: none;
+  border: none;
+  color: inherit;
+  text-decoration: underline;
+  font-size: 0.8rem;
+  padding: 0.4rem;
+}

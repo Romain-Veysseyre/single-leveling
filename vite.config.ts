@@ -5,4 +5,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
   base: '/single-leveling/',
   plugins: [react()],
+  server: {
+    host: true,
+  },
 })
