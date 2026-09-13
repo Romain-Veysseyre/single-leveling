@@ -139,8 +139,8 @@ CC = somme des charges sur [J-27, J] / 4
 ratioCharge = CA / CC
 ```
 
-**Neutralisation à l'amorçage.** Si moins de 28 jours séparent le premier
-événement du journal de la date J, ou si `CC == 0`, alors `ratioCharge = 1.0`.
+**Neutralisation à l'amorçage.** Si moins de 28 jours séparent la première
+SORTIE du journal de la date J, ou si `CC == 0`, alors `ratioCharge = 1.0`.
 Sans cette règle, les premières semaines produisent des ratios délirants et
 l'XP est écrasée dès le départ.
 
@@ -162,6 +162,17 @@ Dérivé de `ratioCharge`, jamais stocké :
 
 L'état n'est pas une sanction. Il s'affiche sur l'avatar et explique pourquoi
 l'XP du jour est réduite. Rien n'est retiré, seul le gain est diminué.
+
+Le ratioCharge stocké détermine l'XP d'une sortie. L'état affiché à l'écran
+est recalculé en direct à la date du jour. Ce sont deux usages distincts de
+la même formule.
+
+**Calcul de l'état affiché.** CA et CC sont recalculés sur les fenêtres
+[J-6, J] et [J-27, J] à partir de la date du jour (J = aujourd'hui), sur la
+base des charges réelles des sorties déjà enregistrées — aucune sortie
+fictive n'est ajoutée. Même règle de neutralisation qu'en 5.2 (moins de 28
+jours depuis la première sortie du journal). Si `CC == 0`, l'état est
+`AFFUTE`.
 
 ### 5.4 XP
 
