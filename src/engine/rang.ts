@@ -20,11 +20,19 @@ import { sommeSurFenetre } from './fenetres';
 
 export type PorteRang = 'longueSortie' | 'hebdo' | 'dplus';
 
+export type DetailPorteBloquante = {
+  porte: PorteRang;
+  /** Seuil requis pour le rang suivant. */
+  requis: number;
+  /** Valeur actuellement atteinte (aujourd'hui). */
+  atteint: number;
+};
+
 export type EtatRang = {
   /** E est le plancher par défaut, même avant toute sortie ou tout seuil atteint. */
   rangAcquis: NomRang;
   /** Portes qui bloquent le passage au rang suivant, évaluées aujourd'hui. Vide si rang max atteint. */
-  portesBloquantes: PorteRang[];
+  portesBloquantes: DetailPorteBloquante[];
 };
 
 const INDEX_PLANCHER = RANGS.findIndex((r) => r.rang === RANG_PLANCHER_DPLUS_MIN);
@@ -85,7 +93,7 @@ function calculerPortesBloquantes(
   sorties: readonly Sortie[],
   dateJ: string,
   rangActuelIndex: number,
-): PorteRang[] {
+): DetailPorteBloquante[] {
   const prochainIndex = rangActuelIndex + 1;
   if (prochainIndex >= RANGS.length) return [];
 
@@ -93,13 +101,19 @@ function calculerPortesBloquantes(
   const longestKme = longestKmeJusqua(sorties, dateJ);
   const hebdoMoyen = kmeHebdoMoyenJusqua(sorties, dateJ);
 
-  const portes: PorteRang[] = [];
-  if (longestKme < prochainRang.kmeLonguesortie) portes.push('longueSortie');
-  if (hebdoMoyen < prochainRang.kmeHebdoMoyen) portes.push('hebdo');
+  const portes: DetailPorteBloquante[] = [];
+  if (longestKme < prochainRang.kmeLonguesortie) {
+    portes.push({ porte: 'longueSortie', requis: prochainRang.kmeLonguesortie, atteint: longestKme });
+  }
+  if (hebdoMoyen < prochainRang.kmeHebdoMoyen) {
+    portes.push({ porte: 'hebdo', requis: prochainRang.kmeHebdoMoyen, atteint: hebdoMoyen });
+  }
 
   if (prochainIndex >= INDEX_PLANCHER) {
     const dplus = dplusSurFenetreJusqua(sorties, dateJ);
-    if (dplus < PLANCHER_DPLUS_METRES) portes.push('dplus');
+    if (dplus < PLANCHER_DPLUS_METRES) {
+      portes.push({ porte: 'dplus', requis: PLANCHER_DPLUS_METRES, atteint: dplus });
+    }
   }
 
   return portes;

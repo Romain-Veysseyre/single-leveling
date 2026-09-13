@@ -33,7 +33,7 @@ function clampRound(valeur: number): number {
 // --- Endurance : 100 × (maxKME / 270)^0.7, 90 j glissants ---
 
 export function enduranceDepuisMaxKme(maxKme: number): number {
-  return clampRound(100 * Math.pow(maxKme / ENDURANCE_REF_KME, ENDURANCE_EXPOSANT));
+  return clampRound(STAT_MAX * Math.pow(maxKme / ENDURANCE_REF_KME, ENDURANCE_EXPOSANT));
 }
 
 export function endurance(sorties: readonly Sortie[], dateJ: string): number {
@@ -44,7 +44,7 @@ export function endurance(sorties: readonly Sortie[], dateJ: string): number {
 // --- Ascension : 100 × (sommeDplus / 12000)^0.7, 30 j glissants ---
 
 export function ascensionDepuisSommeDplus(sommeDplus: number): number {
-  return clampRound(100 * Math.pow(sommeDplus / ASCENSION_REF_DPLUS, ASCENSION_EXPOSANT));
+  return clampRound(STAT_MAX * Math.pow(sommeDplus / ASCENSION_REF_DPLUS, ASCENSION_EXPOSANT));
 }
 
 export function ascension(sorties: readonly Sortie[], dateJ: string): number {
@@ -61,7 +61,7 @@ export function ascension(sorties: readonly Sortie[], dateJ: string): number {
 // --- Vélocité : 100 × (vEq - 5) / 9, 30 j glissants ---
 
 export function velociteDepuisVeq(vEq: number): number {
-  return clampRound((100 * (vEq - VELOCITE_VITESSE_MIN)) / VELOCITE_VITESSE_PLAGE);
+  return clampRound((STAT_MAX * (vEq - VELOCITE_VITESSE_MIN)) / VELOCITE_VITESSE_PLAGE);
 }
 
 export function velocite(sorties: readonly Sortie[], dateJ: string): number {
@@ -86,7 +86,7 @@ function ecartTypePopulation(valeurs: readonly number[]): number {
 }
 
 export function constanceDepuisCV(cv: number, moyenneHebdoKme: number): number {
-  const valeurBrute = 100 * (1 - cv);
+  const valeurBrute = STAT_MAX * (1 - cv);
   const valeur =
     moyenneHebdoKme < CONSTANCE_SEUIL_MOYENNE_HEBDO_KME
       ? Math.min(valeurBrute, CONSTANCE_PLAFOND_SI_FAIBLE_VOLUME)
@@ -142,7 +142,7 @@ export function constance(sorties: readonly Sortie[], dateJ: string): number | n
 // --- Résilience : 100 × (0.60 / coûtMoyen), 60 j glissants ---
 
 export function resilienceDepuisCoutMoyen(coutMoyen: number): number {
-  return clampRound(100 * (RESILIENCE_COUT_REF / coutMoyen));
+  return clampRound(STAT_MAX * (RESILIENCE_COUT_REF / coutMoyen));
 }
 
 export function resilience(sorties: readonly Sortie[], dateJ: string): number {
