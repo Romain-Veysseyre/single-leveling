@@ -240,6 +240,9 @@ avec de l'XP.
 | `MONARQUE` | 270 | 190 | UTMB, Diagonale des Fous |
 | `SOUVERAIN` | 450 | 260 | Tor des Géants, Barkley |
 
+**Le rang E est acquis dès la création du journal.** Les seuils de la ligne
+E ne servent qu'à la lecture, pas au franchissement.
+
 **Règles :**
 
 1. Deux portes. Le rang courant est **le plus faible des deux** rangs obtenus
