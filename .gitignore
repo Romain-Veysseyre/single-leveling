@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Config locale des outils Claude Code (chemins machine-spécifiques)
+.claude/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
