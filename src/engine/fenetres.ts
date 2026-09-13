@@ -15,22 +15,6 @@ export function sommeSurFenetre<T>(
     .reduce((total, item) => total + valeurDe(item), 0);
 }
 
-/** Somme des valeurs des items dont la date tombe dans [dateDebut, dateFin] (bornes incluses). */
-export function sommeSurIntervalle<T>(
-  items: readonly T[],
-  dateDebut: string,
-  dateFin: string,
-  dateDe: (item: T) => string,
-  valeurDe: (item: T) => number,
-): number {
-  return items
-    .filter((item) => {
-      const d = dateDe(item);
-      return d >= dateDebut && d <= dateFin;
-    })
-    .reduce((total, item) => total + valeurDe(item), 0);
-}
-
 export function maxSurFenetre<T>(
   items: readonly T[],
   dateJ: string,

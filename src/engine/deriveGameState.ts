@@ -16,7 +16,8 @@ export type StatsJoueur = {
   endurance: number;
   ascension: number;
   velocite: number;
-  constance: number;
+  /** null pendant l'amorçage (moins de 3 blocs disponibles) : afficher « — ». */
+  constance: number | null;
   resilience: number;
 };
 

@@ -118,8 +118,12 @@ export const VELOCITE_VITESSE_MIN = 5;
 export const VELOCITE_VITESSE_PLAGE = 9;
 export const VELOCITE_FENETRE_JOURS = 30;
 
-/** Nombre de semaines calendaires pleines utilisées pour la Constance. */
-export const CONSTANCE_NB_SEMAINES = 8;
+/** Nombre de blocs glissants de 7 jours utilisés pour la Constance. */
+export const CONSTANCE_NB_BLOCS = 8;
+export const CONSTANCE_TAILLE_BLOC_JOURS = 7;
+
+/** Amorçage : sous ce nombre de blocs disponibles, la stat vaut null. */
+export const CONSTANCE_BLOCS_MIN = 3;
 
 /** Garde-fou : sous cette moyenne hebdo de KME, la stat est plafonnée. */
 export const CONSTANCE_SEUIL_MOYENNE_HEBDO_KME = 10;

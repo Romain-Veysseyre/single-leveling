@@ -266,15 +266,26 @@ Arrondi à l'entier. Bornage strict `clamp(0, 100)`.
 | **Endurance** | `100 × (maxKME / 270)^0.7` | 90 j glissants |
 | **Ascension** | `100 × (sommeDplus / 12000)^0.7` | 30 j glissants |
 | **Vélocité** | `100 × (vEq − 5) / 9` | 30 j glissants |
-| **Constance** | `100 × (1 − CV)` | 8 semaines pleines |
+| **Constance** | `100 × (1 − CV)` | 8 blocs glissants de 7 jours |
 | **Résilience** | `100 × (0.60 / coutMoyen)` | 60 j glissants |
 
 Détails :
 
 - `vEq = Σ KME / Σ heures` sur la fenêtre. Vitesse équivalente à plat, en km/h.
-- `CV` = écart-type ÷ moyenne du KME hebdomadaire sur 8 semaines pleines.
+- `CV` = écart-type ÷ moyenne du KME hebdomadaire sur 8 blocs **glissants**
+  de 7 jours ancrés sur aujourd'hui : `[J-6, J]`, `[J-13, J-7]`, …, jusqu'à
+  `[J-55, J-49]`. Pas de semaines calendaires : avec des semaines ISO, soit
+  la semaine en cours (partielle) gonfle artificiellement le CV, soit elle
+  est exclue et la stat ne bouge que le lundi. Des blocs glissants sont
+  toujours complets, se mettent à jour chaque jour, et restent cohérents
+  avec les autres fenêtres du SPEC.
   **Garde-fou :** si la moyenne hebdo < 10 KME, la stat est plafonnée à 30.
   Sans ça, ne rien faire régulièrement donne une constance parfaite.
+  **Amorçage :** le nombre de blocs retenus pour le calcul est
+  `min(8, blocs complets écoulés depuis la première sortie)`. En dessous de
+  3 blocs disponibles, la stat vaut `null` et l'écran affiche « — ». Sans
+  cette règle, les blocs vides antérieurs à la première sortie écrasent le
+  CV et la Constance reste à 0 pendant les deux premiers mois.
 - `cout(sortie) = rpe / √KME`. `coutMoyen` = moyenne pondérée par le KME.
   Plus le coût baisse à charge égale, plus la stat monte.
 
